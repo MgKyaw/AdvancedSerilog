@@ -11,10 +11,10 @@ namespace AdvancedSerilog
             try
             {
                 string outputTemplate = "{Timestamp:yyyy-MM-dd HH: mm: ss.fff} [{ Level}] { Message} { NewLine} { Exception} ";
-                Log.Logger = new
-                    LoggerConfiguration().WriteTo.File("C:LogsDemo.txt",
-                    rollingInterval: RollingInterval.Day, outputTemplate:
-                    outputTemplate).CreateLogger();
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.File("C:LogsDemo.txt",
+                    rollingInterval: RollingInterval.Day, outputTemplate: outputTemplate)
+                    .CreateLogger();
                 CreateHostBuilder(args).Build().Run();
             }
             catch
