@@ -8,7 +8,23 @@ namespace AdvancedSerilog
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                string outputTemplate = "{Timestamp:yyyy-MM-dd HH: mm: ss.fff} [{ Level}] { Message} { NewLine} { Exception} ";
+                Log.Logger = new
+                    LoggerConfiguration().WriteTo.File("C:LogsDemo.txt",
+                    rollingInterval: RollingInterval.Day, outputTemplate:
+                    outputTemplate).CreateLogger();
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
