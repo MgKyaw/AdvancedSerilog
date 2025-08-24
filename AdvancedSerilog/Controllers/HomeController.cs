@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AdvancedSerilog.Models;
+﻿using AdvancedSerilog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace AdvancedSerilog.Controllers
 {
@@ -20,6 +16,10 @@ namespace AdvancedSerilog.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Log message generated with INFORMATION severity level.");
+            _logger.LogWarning("Log message generated with WARNING severity level.");
+            _logger.LogError("Log message generated with ERROR severity level.");
+            _logger.LogCritical("Log message log generated with CRITICAL severity level.");
             return View();
         }
 
