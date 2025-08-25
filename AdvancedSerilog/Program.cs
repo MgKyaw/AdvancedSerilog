@@ -13,7 +13,7 @@ namespace AdvancedSerilog
             {
                 string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception} ";
                 Log.Logger = new LoggerConfiguration()
-                    .WriteTo.File(Path.Combine("C:Logs", "Test-Log-{Date}.txt"),
+                    .WriteTo.File(Path.Combine("C:Logs", "Test-Log.txt"),
                     rollingInterval: RollingInterval.Day, outputTemplate: outputTemplate)
                     .CreateLogger();
                 CreateHostBuilder(args).Build().Run();
