@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
 using System.IO;
 
 namespace AdvancedSerilog
@@ -13,6 +14,9 @@ namespace AdvancedSerilog
             {
                 string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception} ";
                 Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
                     .WriteTo.File(Path.Combine("C:Logs", "Test-Log.txt"),
                     rollingInterval: RollingInterval.Day, outputTemplate: outputTemplate)
                     .CreateLogger();
