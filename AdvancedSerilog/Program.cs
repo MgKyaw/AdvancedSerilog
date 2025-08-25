@@ -11,7 +11,7 @@ namespace AdvancedSerilog
         {
             try
             {
-                string outputTemplate = "{Timestamp:yyyy-MM-dd HH: mm: ss.fff} [{ Level}] { Message} { NewLine} { Exception} ";
+                string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception} ";
                 Log.Logger = new LoggerConfiguration()
                     .WriteTo.File(Path.Combine("C:Logs", "Test-Log-{Date}.txt"),
                     rollingInterval: RollingInterval.Day, outputTemplate: outputTemplate)
